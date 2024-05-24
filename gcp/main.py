@@ -29,7 +29,9 @@ def predict(request):
 
     image = request.files['file']
 
-    image = np.array(Image.open(image)).convert('RGB').resize((256, 256))
+    image = np.array(
+        Image.open(image).convert("RGB").resize((256, 256)) # image resizing
+    )
     image = image/255
 
     img_array = tf.expand_dims(image, 0)
