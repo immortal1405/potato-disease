@@ -32,9 +32,8 @@ def predict(request):
     image = np.array(
         Image.open(image).convert("RGB").resize((256, 256)) # image resizing
     )
-    image = image/255
 
-    img_array = tf.expand_dims(image, 0)
+    img_array = np.expand_dims(image, 0)
 
     predictions = model.predict(img_array)
     print(predictions)

@@ -32,6 +32,9 @@ async def ping():
 
 def read_file_as_image(data) -> np.ndarray:
     image = np.array(Image.open(BytesIO(data)))
+    image = Image.fromarray(image)
+    image = image.convert("RGB")
+    image = np.array(image.resize((256, 256)))
     return image
 
 @app.post("/predict")
@@ -44,7 +47,7 @@ async def predict(
     predictions = MODEL.predict(img_batch)
 
     predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
-    confidence = np.max(predictions[0])
+    confidence = round(100 * np.max(predictions[0]), 2)
     return {
         'class': predicted_class,
         'confidence': float(confidence)
