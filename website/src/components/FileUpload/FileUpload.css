@@ -1,0 +1,61 @@
+/* src/components/FileUpload/FileUpload.css */
+
+.file-upload {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center items horizontally */
+  }
+  
+  .dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 5px;
+    padding: 40px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+  
+  .dropzone p {
+    margin: 0;
+    color: #007bff;
+    font-size: 16px;
+  }
+  
+  .preview {
+    margin-bottom: 20px;
+  }
+  
+  .preview img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .predict-button, .reset-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .predict-button:disabled, .reset-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  

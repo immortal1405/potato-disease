@@ -1,0 +1,17 @@
+/* src/components/PredictionResult/PredictionResult.css */
+
+.prediction-result {
+    border: 2px solid #007bff; /* Add border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    padding: 20px; /* Add padding inside the box */
+    margin-bottom: 20px; /* Add margin to separate prediction results */
+  }
+  
+  .prediction-result h2 {
+    margin-bottom: 10px;
+  }
+  
+  .prediction-result p {
+    margin: 5px 0;
+  }
+  
