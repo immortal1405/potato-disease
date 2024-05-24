@@ -38,7 +38,15 @@ def predict(request):
     predictions = model.predict(img_array)
     print(predictions)
 
-    predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
-    confidence = round(100 * (np.max(predictions[0])), 2)
-
-    return {"class": predicted_class, "confidence": confidence}
+    predicted_class_idx = np.argmax(predictions[0])
+    confidence = round(100 * np.max(predictions[0]), 2)
+    
+    if confidence < 65:
+        predicted_class = "Error! Not Recognized"
+    else:
+        predicted_class = CLASS_NAMES[predicted_class_idx]
+    
+    return {
+        'class': predicted_class,
+        'confidence': float(confidence)
+    }

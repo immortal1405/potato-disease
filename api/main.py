@@ -1,5 +1,3 @@
-
-
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -45,9 +43,14 @@ async def predict(
     img_batch = np.expand_dims(image, 0)
     
     predictions = MODEL.predict(img_batch)
-
-    predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
+    predicted_class_idx = np.argmax(predictions[0])
     confidence = round(100 * np.max(predictions[0]), 2)
+    
+    if confidence < 65:
+        predicted_class = "Error! Not Recognized"
+    else:
+        predicted_class = CLASS_NAMES[predicted_class_idx]
+    
     return {
         'class': predicted_class,
         'confidence': float(confidence)
